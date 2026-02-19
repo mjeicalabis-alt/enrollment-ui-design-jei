@@ -1,45 +1,91 @@
+/* GENERAL STYLING */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
 .container {
   max-width: 1100px;
   margin: 30px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  padding: 20px 30px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-h1 {
+/* HEADER */
+.header {
   text-align: center;
-  margin-bottom: 30px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  padding: 30px 20px;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.header p {
+  margin: 5px 0 0;
+  font-size: 1.2em;
+}
+
+/* FIELDSETS */
 fieldset {
-  margin-bottom: 30px;
-  padding: 20px;
-  border: 1px solid #ccc;
+  border: 2px solid #6a11cb;
+  border-radius: 10px;
+  padding: 20px 30px;
+  margin-bottom: 25px;
+  background: #f9faff;
 }
 
 legend {
   font-weight: bold;
+  color: #2575fc;
+  padding: 0 10px;
 }
 
+/* LABELS AND INPUTS */
 label {
   display: block;
+  font-weight: 600;
   margin-bottom: 5px;
+  color: #444;
 }
 
-input, select {
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
   width: 100%;
-  padding: 8px;
+  padding: 10px 12px;
   margin-bottom: 15px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: 0.3s;
 }
 
-input:focus, select:focus {
-  outline: 2px solid #007bff;
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
+  outline: none;
+}
+
+/* GRID LAYOUTS */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }
 
 .grid-4 {
@@ -48,30 +94,116 @@ input:focus, select:focus {
   gap: 15px;
 }
 
-.grid-2 {
+.grid-5 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 15px;
 }
 
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  font-size: 16px;
+@media (max-width: 1000px) {
+  .grid-3, .grid-4, .grid-5 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-3, .grid-4, .grid-5 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ERROR AND VALIDATION */
+.error {
+  color: #e74c3c;
+  font-size: 0.85em;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.error-border {
+  border-color: #e74c3c !important;
+}
+
+.valid-border {
+  border-color: #2ecc71 !important;
+}
+
+/* RADIO GROUPS */
+.radio-group {
+  margin-bottom: 15px;
+}
+
+.radio-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.radio-options label {
+  margin-right: 20px;
+  font-weight: normal;
   cursor: pointer;
 }
 
-.submit-btn:hover {
-  background-color: #0056b3;
+.radio-options input {
+  margin-right: 5px;
+  color: #2575fc;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .grid-4,
-  .grid-2 {
-    grid-template-columns: 1fr;
-  }
+/* BUTTON */
+button[type="submit"],
+.modal button {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  font-size: 1em;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover,
+.modal button:hover {
+  background: linear-gradient(90deg, #2575fc, #6a11cb);
+}
+
+/* MODAL STYLING */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal h2 {
+  color: #2575fc;
+  margin-bottom: 15px;
+}
+
+.modal p {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+/* PLACEHOLDER STYLING */
+::placeholder {
+  color: #999;
+  font-style: italic;
 }
